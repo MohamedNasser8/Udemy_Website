@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+/*.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,6 +35,56 @@
   to {
     transform: rotate(360deg);
   }
+}*/
+.sec1 {
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: "Times New Roman", Times, serif;
+  width: 88%;
+  margin: 0 auto;
+  background-color: #8f8f8f0f;
+  height: 380px;
+  z-index: 0;
+  gap: 0px;
+}
+/*left text at header*/
+.left {
+  width: 43%;
+  margin-left: 20px;
+}
+/*photo of header*/
+.nav-photo {
+  margin-top: 10px;
+  z-index: 0;
+  margin-left: 70px;
+  min-width: 100px;
+  height: 90%;
+}
+.navbar-message {
+  position: absolute;
+  top: 0px;
+  margin-top: 70px;
+  margin-left: 50px;
+  min-width: 200px;
+  max-width: 350px;
+  padding: 20px;
+  max-height: 75%;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+}
+.navbar-message h1 {
+  padding: 0;
+  font-size: 34px;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.navbar-message p {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-size: 19px;
 }
 
 .course {
@@ -102,7 +152,7 @@
   line-height: 21px;
   margin-bottom: 27px;
 }
-.feature a {
+.feature .explore {
   color: black;
   text-decoration: none;
   padding: 10px;
@@ -164,11 +214,19 @@
   color: orange;
   font-size: 13px;
 }
-.courses > div {
-  max-width: 224px;
-  margin-right: 0px;
-  min-width: calc(20% - 15px);
-  display: flex;
+.courses a{
+  color: black;
+  text-decoration: none !important;
+}
+.courses a:hover{
+  color: black;
+  text-decoration: none !important;
+}
+.courses>a {
+  max-width: 224px !important;
+  margin-right: 0px !important;
+  min-width: calc(20% - 15px) !important;
+  display: flex !important;
   flex-direction: column;
 }
 
@@ -178,7 +236,7 @@
 }
 .courses p {
   font-size: 13px;
-  color: rgb(112, 109, 109);
+  color: rgb(112, 109, 109) !important;
   margin: 0;
 }
 .courses h4 {

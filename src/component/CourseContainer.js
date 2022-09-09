@@ -1,33 +1,37 @@
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Courses from "./Courses";
 import "../App.css";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 function courses(coursesData) {
   let arrOfCourse = [];
-  let data = coursesData.map((course) => {
+  coursesData.map((course, index) => {
     arrOfCourse.push(
-      <Courses
-        key={course.id}
-        image={course.image}
-        title={course.title}
-        rating={course.rating}
-        author={course.author}
-        price={course.price}
-        people={course.people}
-        oldPrice={course.oldPrice}
-      ></Courses>
+      <Link to={`/Course/${index}`}>
+        <Courses
+          key={course.id}
+          image={course.image}
+          title={course.title}
+          rating={course.rating}
+          author={course.author}
+          price={course.price}
+          people={course.people}
+          oldPrice={course.oldPrice}
+        ></Courses>
+      </Link>
     );
+    return 1;
   });
   return arrOfCourse;
 }
-let course, nextButton, currNumber, prevButton;
+
+let nextButton, currNumber, prevButton;
 function CourseContainer() {
+  const course = useRef(0);
   useEffect(() => {
-    course = document.querySelector(".courses");
-    //console.log(course);
     nextButton = document.querySelector(".next");
     prevButton = document.querySelector(".previos");
     currNumber = 10;
@@ -152,14 +156,16 @@ function CourseContainer() {
           <a href="https://github.com/facebook" className="explore">
             Explore Python
           </a>
-          <div className="courses">{courses(coursesData)}</div>
+          <div className="courses" ref={course}>
+            {courses(coursesData)}
+          </div>
 
           <button
             className="previos"
             onClick={() => {
               console.log("Previous button clicked");
               const courseType = document.querySelector(".courses div");
-              let coursedimention = course.getBoundingClientRect();
+              let coursedimention = course.current.getBoundingClientRect();
               let courseswidth = coursedimention.width;
               let widthOfCourse = courseType.getBoundingClientRect().width + 20;
               for (let i = 1; i < 6; i++) {
@@ -168,10 +174,10 @@ function CourseContainer() {
                   break;
                 }
               }
-              if (courseswidth == 0) courseswidth = widthOfCourse;
-              course.scrollLeft -= courseswidth;
+              if (courseswidth === 0) courseswidth = widthOfCourse;
+              course.current.scrollLeft -= courseswidth;
 
-              if (course.scrollLeft <= courseswidth) {
+              if (course.current.scrollLeft <= courseswidth) {
                 prevButton.style.display = "none";
               }
               nextButton.style.display = "flex";
@@ -183,26 +189,29 @@ function CourseContainer() {
             className="next"
             onClick={() => {
               const courseType = document.querySelector(".courses div");
-              let coursedimention = course.getBoundingClientRect();
+              let coursedimention = course.current.getBoundingClientRect();
               let courseswidth = coursedimention.width;
 
               let widthOfCourse = courseType.getBoundingClientRect().width + 20,
                 widthScroll;
-              console.log(course);
+              //console.log(course.current);
               let totalWidth = currNumber * widthOfCourse - 20;
               for (let i = 1; i < 6; i++) {
+                console.log(widthOfCourse * i, courseswidth);
                 if (!(courseswidth > i * widthOfCourse)) {
                   widthScroll = (i - 1) * widthOfCourse;
+
                   break;
                 }
               }
               //console.log(courseswidth);
-              if (widthScroll == 0) widthScroll = widthOfCourse;
-              course.scrollLeft += widthScroll;
+              if (widthScroll === 0) widthScroll = widthOfCourse;
 
-              //  console.log(totalWidth);
+              course.current.scrollLeft += widthScroll;
+
               if (
-                totalWidth - (course.scrollLeft + courseswidth + widthScroll) <=
+                totalWidth -
+                  (course.current.scrollLeft + courseswidth + widthScroll) <=
                 0
               )
                 nextButton.style.display = "none";
