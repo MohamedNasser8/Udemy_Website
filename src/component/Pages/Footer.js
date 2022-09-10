@@ -5,7 +5,7 @@ import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import styles from "./CourseDescripe.module.scss";
 const Footer = () => {
   return (
-    <div className="bg-dark p-4 py-3">
+    <div className={`bg-dark p-4 py-3 ${styles.maxheight}`}>
       <div className="d-flex flex-wrap justify-content-between">
         <h5 className={`mt-1 ${styles.footertextcolor}`}>
           Top companies choose

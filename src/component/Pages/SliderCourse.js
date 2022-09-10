@@ -13,7 +13,15 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import {} from "@fortawesome/free-regular-svg-icons";
 
-const SliderCourse = ({ img, price, hours, downloadResource, article }) => {
+const SliderCourse = ({
+  img,
+  price,
+  hours,
+  downloadResource,
+  article,
+  reference,
+}) => {
+  let [end, setEnd] = useState(500);
   let [x, setX] = useState(true);
   let [display, setDisplay] = useState("block");
   let [y, sety] = useState(true);
@@ -21,6 +29,7 @@ const SliderCourse = ({ img, price, hours, downloadResource, article }) => {
   let [topPosition, setTopPosition] = useState("105px");
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
+    setEnd(reference?.current.offsetTop - 730);
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
@@ -35,7 +44,7 @@ const SliderCourse = ({ img, price, hours, downloadResource, article }) => {
       setTopPosition("105px");
     }
   if (x)
-    if (scrollPosition >= 300 && scrollPosition < 2900) {
+    if (scrollPosition >= 300 && scrollPosition < end) {
       setDisplay("none");
       setPos("fixed");
       setTopPosition("20px");
@@ -44,9 +53,9 @@ const SliderCourse = ({ img, price, hours, downloadResource, article }) => {
       sety(true);
     }
   if (z)
-    if (scrollPosition >= 2936) {
+    if (scrollPosition >= end) {
       setPos("absolute");
-      setTopPosition("2948px");
+      setTopPosition(`${end}px`);
       setZ(false);
       setX(true);
       sety(true);

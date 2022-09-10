@@ -222,7 +222,7 @@
   color: black;
   text-decoration: none !important;
 }
-.courses>a {
+.courses>div {
   max-width: 224px !important;
   margin-right: 0px !important;
   min-width: calc(20% - 15px) !important;

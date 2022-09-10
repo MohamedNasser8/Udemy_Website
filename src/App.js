@@ -7,6 +7,7 @@ import NavBar from "./component/NavBar/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./component/Header";
 import CourseDescription from "./component/Pages/CourseDescription";
+import Loading from "./component/Pages/Loading";
 function App() {
   let api = `http://myjson.dit.upm.es/api/bins/c7wq`;
   let [content, setContent] = useState([]);
@@ -17,15 +18,22 @@ function App() {
       setContent(data.courses);
     })();
   }, [api]);
+  let [show, setShow] = useState("none");
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow("block");
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <Router>
-      <div className="App">
+      <div style={{ display: `${show}` }} className="App">
         <NavBar />
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+
         {content?.map((number, index) => {
-          console.log(number);
           return (
             <Route
               path={`/Course/${index}`}
@@ -38,10 +46,24 @@ function App() {
   );
 }
 const Home = () => {
+  let [show, setShow] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
-      <Header />;
-      <CourseContainer />;
+      {show ? (
+        <Loading />
+      ) : (
+        <>
+          {" "}
+          <Header />
+          <CourseContainer />
+        </>
+      )}
     </>
   );
 };

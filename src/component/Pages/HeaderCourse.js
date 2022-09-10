@@ -63,11 +63,10 @@ function rate(course) {
   return starRate;
 }
 const HeaderCourse = ({ content }) => {
-  let [display, setDisplay] = useState("none");
   return (
     <div className="bg-dark p-4 mb-2">
-      <div className={`${styles.con} mx-auto ms-xl-5 p-xl-s-5 my-2`}>
-        <div className="ps-xl-5">
+      <div className={`${styles.con} mx-auto ms-lg-5 ps-xl-5 my-2`}>
+        <div className="ps-l-5">
           <div className="text-light ps-xl-5 ms-xl-5">
             <div className="d-flex gap-2 mb-3">
               <span>Development</span>
@@ -109,18 +108,22 @@ const HeaderCourse = ({ content }) => {
             >
               Add to cart
             </button>
-            <p className={`${styles.imgofcourse}`}>
+            <p
+              className={`${styles.imgofcourse} ${styles.adjusttext} text-center`}
+            >
               30-Day Money-Back Guarantee
             </p>
-            <p className={`${styles.pros} ${styles.imgofcourse}`}>
+            <p
+              className={`${styles.pros} text-center ${styles.adjusttext} ${styles.imgofcourse}`}
+            >
               Full lifetime access
             </p>
             <div
-              className={`d-flex ${styles.imgofcourse} justify-content-between ${styles.option} mb-4`}
+              className={`d-flex px-4 ${styles.imgofcourse}  justify-content-between ${styles.option} mb-4`}
             >
-              <p className={`${styles.optionp}`}>Share</p>
-              <p className={`${styles.optionp}`}>Gift this course</p>
-              <p className={`${styles.optionp}`}>Apply Coupon</p>
+              <p className={`${styles.optionr}`}>Share</p>
+              <p className={`${styles.optionr}`}>Gift this course</p>
+              <p className={`${styles.optionr}`}>Apply Coupon</p>
             </div>
           </div>
         </div>
