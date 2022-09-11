@@ -36,23 +36,13 @@ function courses(coursesData) {
 }
 
 let nextButton, currNumber, prevButton;
-function CourseContainer() {
+function CourseContainer({ coursesData }) {
   const course = useRef(0);
   useEffect(() => {
     nextButton = document.querySelector(".next");
     prevButton = document.querySelector(".previos");
     currNumber = 10;
   }, []);
-
-  let api = `http://myjson.dit.upm.es/api/bins/c4tm`;
-  let [coursesData, setCoursesData] = useState([]);
-
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then((res) => res.json());
-      setCoursesData(data);
-    })();
-  }, [api]);
 
   //http://myjson.dit.upm.es/api/bins/94sq
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./CourseDescripe.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

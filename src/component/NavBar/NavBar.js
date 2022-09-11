@@ -1,6 +1,9 @@
 import React from "react";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faBars,
   faCartShopping,
@@ -8,7 +11,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-function NavBar() {
+
+function NavBar({ update, initData }) {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = searchParams.get("name") || "";
+
+  const handleSearch = (e) => {
+    const name = e.target.value;
+    if (name) {
+      setSearchParams({ name });
+    } else setSearchParams({});
+  };
+  let filterstring;
+  let search = (e) => {
+    e.preventDefault();
+    filterstring = initData?.filter((element) => {
+      if (element?.title?.toLowerCase()?.includes(searchTerm)) {
+        return element;
+      }
+    });
+    update(filterstring);
+    setSearchParams({ searchTerm });
+  };
+
   return (
     <nav className="head">
       <div class="setting">
@@ -33,10 +59,20 @@ function NavBar() {
               type="text"
               placeholder="Search for anything"
               className="sear"
+              onChange={handleSearch}
+              value={searchTerm}
             />
-          </div>
-          <button id="searchButton" className="searchb" type="submit">
-            Search
+          </div>{" "}
+          <button
+            id="searchButton"
+            className="searchb"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/?name=" + searchTerm);
+            }}
+          >
+            <span onClick={search}>Search</span>
           </button>
         </form>
       </div>
