@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import Courses from "./Courses";
 import "../App.css";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
@@ -92,7 +92,10 @@ function CourseContainer({ coursesData }) {
                 nextButton.style.display = "flex";
               }}
             >
-              <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faAngleLeft}
+                style={{ color: "white" }}
+              ></FontAwesomeIcon>
             </button>
             <button
               className="next"
@@ -128,7 +131,10 @@ function CourseContainer({ coursesData }) {
                 prevButton.style.display = "flex";
               }}
             >
-              <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                style={{ color: "white" }}
+              ></FontAwesomeIcon>
             </button>
           </div>
         </div>

@@ -12,9 +12,9 @@ let [coursesData, setCoursesData] = [];
 let [initData, setinitData] = [];
 
 function App() {
-  let api = `http://myjson.dit.upm.es/api/bins/c7wq`;
-  let [content, setContent] = useState([]);
-  let api2 = `http://myjson.dit.upm.es/api/bins/c4tm`;
+  const api = `http://myjson.dit.upm.es/api/bins/c7wq`;
+  const [content, setContent] = useState([]);
+  const api2 = `http://myjson.dit.upm.es/api/bins/c4tm`;
   [coursesData, setCoursesData] = useState([]);
   [initData, setinitData] = useState([]);
 
