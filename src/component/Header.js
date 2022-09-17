@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import photo from "./11.jpg";
 const Header = () => {
   return (
     <header className="sec1">
@@ -12,7 +13,7 @@ const Header = () => {
           </p>
         </div>
       </div>
-      <img className="nav-photo" src="../../photos/11.jpg" alt="" />
+      <img className="nav-photo" src={photo} alt="c" />
     </header>
   );
 };
