@@ -84,15 +84,9 @@ npm start
 
 <hr style="background-color: #4b4c60"></hr>
 <a id ="Contributors"></a>
-
-## <img align="center"  height =60px src="https://user-images.githubusercontent.com/63050133/156777293-72a6e681-2582-4a9d-ad92-09d1181d47c7.gif"> Contributors
-
-<br>
 <table >
  
 </table>
-
-<hr style="background-color: #4b4c60"></hr>
 
 <a id ="License"></a>
 
